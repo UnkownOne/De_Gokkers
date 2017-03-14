@@ -10,21 +10,26 @@ function closeNav() {
 
 
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+//login menu
+var modal = document.getElementById('id01');
 
 
 window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-  }
 }
